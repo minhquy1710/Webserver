@@ -1,0 +1,221 @@
+<div class="form-row">
+  <div class="form-group col-md-7">
+    <h3 class="d-flex justify-content-center">Thông tin đăng ký</h3>
+    <div style="color: red;">(*) Bắc buộc</div>
+    <form class="bg-light p-4" method="POST" enctype="application/x-www-form-urlencoded">
+      <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-2">
+          <label for="inputPassword4">Mã phiếu</label>
+          <input type="text" class="form-control" name="ID" id="ID" placeholder="ID" readonly>
+        </div>
+        <div class="form-group col-md-5">
+          <label for="inputEmail4">Họ và tên</label>
+          <span style="color: red;">*</span>
+          <input type="text" class="form-control" name="hoten" placeholder="Họ và tên" required>
+        </div>
+        <div class="form-group col-md-5">
+          <label for="inputPassword4">Di động</label>
+          <span style="color: red;">*</span>
+          <input type="text" class="form-control" name="sdt" placeholder="Di động" required>
+        </div>
+      </div>
+      <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-6">
+          <label>Tên doanh nghiệp</label>
+          <span style="color: red;">*</span>
+          <input type="text" class="form-control" name="tendoanhnghiep" placeholder="Tên doanh nghiệp" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Email</label>
+          <span style="color: red;">*</span>
+          <input type="email" class="form-control" name="email" placeholder="email" required>
+        </div>
+      </div>
+      <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-4">
+          <label for="inputEmail4">Tỉnh/Thành phố</label>
+          <span style="color: red;">*</span>
+          <select class="form-control" id="city" name="city" required>
+            <option value="" selected>Chọn tỉnh thành</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Quận/Huyện</label>
+          <span style="color: red;">*</span>
+          <select class="form-control" id="district" name="distr" required>
+            <option value="" selected>Chọn quận huyện</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Phường/Xã</label>
+          <span style="color: red;">*</span>
+          <select class="form-control" id="ward" name="ward" required>
+            <option value="" selected>Chọn phường xã</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-6">
+          <label>Chọn loại hàng</label>
+          <span style="color: red;">*</span>
+          <select class="form-control" name="loaihang" id="loaihang" required>
+            <option value="" selected>Chọn loại hàng</option>
+            {{#each dangky}}
+            <option>{{this.TenLoaiHang}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Ngày dự kiến</label>
+          <span style="color: red;">*</span>
+          <input type="text" class="form-control" name="date" placeholder="Ngày tháng" required>
+        </div>
+      </div>
+
+      <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-4">
+          <label>Tên lái xe</label>
+          <input type="text" class="form-control" name="laixe" placeholder="Tên lái xe">
+        </div>
+        <div class="form-group col-md-4">
+          <label>Biển số đầu</label>
+          <input type="text" class="form-control" name="biensodau" placeholder="Biển số đầu">
+        </div>
+        <div class="form-group col-md-4">
+          <label>Biển số đuôi</label>
+          <input type="text" class="form-control" name="biensoduoi" placeholder="Biển số đuôi">
+        </div>
+      </div>
+
+      <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-4">
+          <label for="inputEmail4">CMND</label>
+          <input type="text" class="form-control" name="cmnd" placeholder="Số CMND">
+        </div>
+        <div class="form-group col-md-4">
+          <label>Xuất/Nhập</label>
+          <span style="color: red;">*</span>
+          <select class="form-control" name="xuatnhap" required>
+            <option value="" selected>Chọn</option>
+            <option>Xuất</option>
+            <option>Nhập</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Khối lượng</label>
+          <span style="color: red;">*</span>
+          <input type="text" class="form-control" name="khoiluong" placeholder="Khối lượng" required>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" name="btn_reg">Đăng ký</button>
+      </div>
+    </form>
+
+
+  </div>
+  <div class="form-group col-md-5">
+    <h3 class="d-flex justify-content-center">Bảng giá</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Mã</th>
+          <th scope="col">Tên loại hàng</th>
+          <th scope="col">Đơn giá</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each dangky}}
+        <tr>
+          <th>{{this.Ma}}</th>
+          <td>{{this.TenLoaiHang}}</td>
+          <td>{{this.DonGia}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+  // Hàm để tạo một giá trị ID ngẫu nhiên
+  function generateRandomID() {
+    var length = 5;
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var result = '';
+
+    for (var i = 0; i < length; i++) {
+      var randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+    }
+
+    return result;
+  }
+
+  // Thực hiện tạo giá trị ID ngẫu nhiên và gán vào trường input khi tải trang
+  window.onload = function () {
+    var idInput = document.getElementById('ID');
+    idInput.value = generateRandomID();
+  };
+
+
+  var citis = document.getElementById("city");
+  var districts = document.getElementById("district");
+  var wards = document.getElementById("ward");
+  var Parameter = {
+    url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+    method: "GET",
+    responseType: "application/json",
+  };
+  var promise = axios(Parameter);
+  promise.then(function (result) {
+    renderCity(result.data);
+  });
+
+  function renderCity(data) {
+    for (const x of data) {
+      citis.options[citis.options.length] = new Option(x.Name, x.Name);
+    }
+    citis.onchange = function () {
+      districts.length = 1;
+      wards.length = 1;
+      if (this.value != "") {
+        const result = data.filter((n) => n.Name === this.value);
+
+        for (const k of result[0].Districts) {
+          districts.options[districts.options.length] = new Option(k.Name, k.Name);
+        }
+      }
+    };
+    districts.onchange = function () {
+      wards.length = 1;
+      const dataCity = data.filter((n) => n.Name === citis.value);
+      if (this.value != "") {
+        const dataWards = dataCity[0].Districts.filter(
+          (n) => n.Name === this.value
+        )[0].Wards;
+
+        for (const w of dataWards) {
+          wards.options[wards.options.length] = new Option(w.Name, w.Name);
+        }
+      }
+    };
+  }
+  document.querySelector("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Đăng ký thành công!',
+      text: 'Cảm ơn bạn đã đăng ký.',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.submit();
+      }
+    });
+  });
+</script>

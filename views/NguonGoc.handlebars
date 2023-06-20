@@ -1,0 +1,24 @@
+<h1>Nguồn gốc</h1>
+<table id="nguongoc" class="table table-striped" style="font-size: 15px;">
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Tên nguồn gốc</th>
+            <th>Ghi chú</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each nguongoc}}
+        <tr>
+            <td>{{this.Ma}}</td>
+            <td>{{this.TenNGHH}}</td>
+            <td>{{this.GhiChu}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script>
+        $(document).ready(function () {
+        $('#nguongoc').DataTable();
+        });
+</script>

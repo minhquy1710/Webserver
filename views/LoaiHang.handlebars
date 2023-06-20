@@ -1,0 +1,28 @@
+<h1>Loại hàng</h1>
+<table id="loaihang" class="table table-striped" style="font-size: 15px;">
+    <thead>
+        <tr>
+            <th>Mã loại hàng</th>
+            <th>Tên loại hàng</th>
+            <th>Đơn giá</th>
+            <th>Khối lượng hàng</th>
+            <th>Ghi chú</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each loaihang}}
+        <tr>
+            <td>{{this.Ma}}</td>
+            <td>{{this.TenLoaiHang}}</td>
+            <td>{{this.DonGia}}</td>
+            <td>{{this.KhoiLuongHang}}</td>
+            <td>{{this.GhiChu}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script>
+        $(document).ready(function () {
+        $('#loaihang').DataTable();
+        });
+</script>

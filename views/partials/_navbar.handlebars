@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-dark">
+    <div class="container d-flex justify-content-center align-items-center">
+        <a href="#" class="navbar-brand">
+            <img src="https://hcmute.edu.vn/Resources/Images/SubDomain/HomePage/Gioi%20thieu/Tieng%20Viet.png" alt="logo" style="width:1000px;">
+        </a>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark mb-4">
+    <div class="container">
+        <button class="navbar-toggler" tyle="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collabsibleNavbar">
+            <ul class="navbar-nav">
+                {{#if isLoggedIn}}
+                <li class="nav-item">
+                    <a href="/main" class="nav-link" style="font-size: 18px;">Trang Chủ</a>
+                </li>
+                <li class="nav-item dropdown" >
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size: 18px;">Thống Kê</a>
+                    <div class="dropdown-menu">
+                        <a href="/thongke/khachhang" class="dropdown-item">Khách hàng</a>
+                        <a href="/thongke/loaihang" class="dropdown-item">Loại hàng</a>
+                        <a href="/thongke/nguongoc" class="dropdown-item">Nguồn gốc hàng hóa</a>
+                        <a href="/thongke/phuongtien" class="dropdown-item">Phương tiện</a>
+                        <a href="/thongke/khohang" class="dropdown-item">Kho hàng</a>
+                        <a href="/thongke/thongtincanxe" class="dropdown-item">Thông tin cân xe</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/accept" class="nav-link" style="font-size: 18px; ">Xác nhận</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link" style="font-size: 18px;">Thông Tin</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a href="/register" class="nav-link" style="font-size: 18px;">Đăng ký</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="/search" class="nav-link" style="font-size: 18px;">Tra cứu</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link" style="font-size: 18px;">Thông Tin</a>
+                </li>
+                {{/if}}
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {{#if isLoggedIn}}
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link" style="font-size: 18px;">Đăng xuất</a>
+                </li>
+                {{else}}
+                <li class="nav-item ">
+                    <a href="/login" class="nav-link" style="font-size: 18px;">Đăng nhập</a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>

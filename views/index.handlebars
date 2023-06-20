@@ -1,0 +1,95 @@
+<div>
+  <div class="row">
+    <div class="col-md-6">
+      <canvas id="myChart" style="max-width: 700px;"></canvas>
+    </div>
+    <div class="col-md-6">
+      <canvas id="pieChart" style="max-width:700px"></canvas>
+    </div>
+  </div>
+</div>
+
+<script>
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Nhập", "Xuất"],
+      datasets: [{
+        data: [{{ nhap }}, {{ xuat }}],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: "SỐ LƯỢNG NHẬP XUẤT MỖI NGÀY (LẦN)"
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+var xValues = [{{#each loaihang}}"{{this.TenLoaiHang}}",{{/each}}];
+var yValues = [{{#each loaihang}}"{{this.KhoiLuongHang}}",{{/each}}];
+
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#949FB1",
+  "#1e7145",
+  "#FDB45C", 
+  "#4D5360"
+];
+
+// Hàm tạo màu ngẫu nhiên
+function randomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+// Tạo mảng màu sắc tương ứng với số lượng giá trị
+var numValues = yValues.length;
+var customBarColors = barColors.slice(0, numValues);
+for (var i = barColors.length; i < numValues; i++) {
+  customBarColors.push(randomColor());
+}
+
+new Chart("pieChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: customBarColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "THỐNG KÊ HÀNG (KG)"
+    },
+  }
+});
+
+</script>

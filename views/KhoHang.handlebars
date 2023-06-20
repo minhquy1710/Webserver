@@ -1,0 +1,26 @@
+<h1>Kho hàng</h1>
+<table id="khohang" class="table table-striped" style="font-size: 15px;">
+    <thead>
+        <tr>
+            <th>Mã kho hàng</th>
+            <th>Tên kho hàng</th>
+            <th>Địa chỉ kho hàng</th>
+            <th>Ghi chú</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each khohang}}
+        <tr>
+            <td>{{this.MaKhoHang}}</td>
+            <td>{{this.TenKhoHang}}</td>
+            <td>{{this.DiaChiKhoHang}}</td>
+            <td>{{this.GhiChu}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script>
+        $(document).ready(function () {
+        $('#khohang').DataTable();
+        });
+</script>
